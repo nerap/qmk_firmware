@@ -25,13 +25,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //};
 
 enum {
-    TD_LSFT_LALT = 0
+    TD_LSFT_LALT,
+    TD_LGUI_LCTL,
+    TD_LCTL_LGUI
 };
 
 // Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
     // double tap shift for alt
-    [TD_LSFT_LALT] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_LALT)
+    [TD_LSFT_LALT] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_LALT),
+    [TD_LGUI_LCTL] = ACTION_TAP_DANCE_DOUBLE(KC_LGUI, KC_LCTL),
+    [TD_LCTL_LGUI] = ACTION_TAP_DANCE_DOUBLE(KC_LCTL, KC_LGUI)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -43,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
 TD(TD_LSFT_LALT),KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                        KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, KC_RSFT,   MO(1),     KC_SPC,  MO(2),  KC_LCTL
+                                          TD(TD_LGUI_LCTL), KC_RSFT,   MO(1),     KC_SPC,  MO(2),  TD(TD_LCTL_LGUI)
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -55,7 +59,7 @@ TD(TD_LSFT_LALT),KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
 TD(TD_LSFT_LALT), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                  XXXXXXX, KC_UNDS, KC_BSLS, KC_LCBR, KC_RCBR,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, KC_RSFT,   MO(3),    KC_SPC, _______, KC_LCTL
+                                          TD(TD_LGUI_LCTL), KC_RSFT,   MO(3),    KC_SPC, _______, TD(TD_LCTL_LGUI)
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -67,7 +71,7 @@ TD(TD_LSFT_LALT), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                  
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
 TD(TD_LSFT_LALT), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         KC_LGUI,  KC_RSFT, _______,    KC_SPC,  MO(3),  KC_LCTL
+                                         TD(TD_LGUI_LCTL),  KC_RSFT, _______,    KC_SPC,  MO(3),  TD(TD_LCTL_LGUI)
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -79,7 +83,7 @@ TD(TD_LSFT_LALT), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                  
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         KC_LGUI, KC_RSFT, _______,     KC_SPC, _______, KC_LCTL
+                                         TD(TD_LGUI_LCTL), KC_RSFT, _______,     KC_SPC, _______, TD(TD_LCTL_LGUI)
                                       //`--------------------------'  `--------------------------'
   )
 };
